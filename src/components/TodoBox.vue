@@ -7,13 +7,15 @@
           type="text"
           class="form-control"
           placeholder="Enter title of TODO"
+          v-model="title"
         />
         <textarea
           cols="30"
           rows="10"
           class="form-control my-4"
           placeholder="Enter discription of your TODO"
-        ></textarea>
+        >
+        </textarea>
         <button class="btn btn-success text-white align-self-start">
           submit
         </button>
@@ -21,11 +23,20 @@
     </div>
   </div>
 </template>
-<script scoped>
+<script>
 export default {
   data() {
-    return {
-    };
+    return {};
+  },
+  computed: {
+    title: {
+      get() {
+        return this.$store.getters.getInputTitle;
+      },
+      set(value) {
+        this.$store.commit("changeInputTitle", value);
+      }
+    }
   }
 };
 </script>
