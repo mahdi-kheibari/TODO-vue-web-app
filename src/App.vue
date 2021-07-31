@@ -8,7 +8,7 @@
           </div>
           <div class="col-12 col-md-6">
             <div class="d-flex flex-column h-100 justify-content-center">
-              <todo-item></todo-item>
+              <todo-item v-for="todo in todos" :key="todo.id" :title="todo.title" :caption="todo.caption"></todo-item>
             </div>
           </div>
         </div>
@@ -27,6 +27,11 @@ export default {
   components: {
     "todo-box": TodoBox,
     "todo-item": TodoItem
+  },
+  computed: {
+    todos() {
+      return this.$store.getters.todos;
+    }
   }
 };
 </script>
@@ -34,7 +39,11 @@ export default {
 .bg-main {
   height: 100%;
   background: rgb(249, 100, 0);
-  background: linear-gradient(90deg, rgba(249, 100, 0, 1) 0%, rgba(255, 89, 0, 1) 23%, rgba(255, 178, 0, 1) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(249, 100, 0, 1) 0%,
+    rgba(255, 89, 0, 1) 23%,
+    rgba(255, 178, 0, 1) 100%
+  );
 }
-  
 </style>

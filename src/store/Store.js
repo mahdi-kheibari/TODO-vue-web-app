@@ -7,7 +7,9 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
-        inputTitle:""
+        todos:[],
+        todoTitle:"",
+        todoCaption:""
     },
     actions,
     getters,

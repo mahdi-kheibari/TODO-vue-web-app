@@ -14,9 +14,11 @@
           rows="10"
           class="form-control my-4"
           placeholder="Enter discription of your TODO"
+          v-model="caption"
         >
         </textarea>
-        <button class="btn btn-success text-white align-self-start">
+        <button @click="setTodo" 
+        class="btn btn-success text-white align-self-start">
           submit
         </button>
       </div>
@@ -24,6 +26,7 @@
   </div>
 </template>
 <script>
+// import { mapActions } from "vuex";
 export default {
   data() {
     return {};
@@ -31,13 +34,28 @@ export default {
   computed: {
     title: {
       get() {
-        return this.$store.getters.getInputTitle;
+        return this.$store.getters.getTodoTitle;
       },
       set(value) {
-        this.$store.commit("changeInputTitle", value);
+        // return mapActions(["changeTodoTitle"]);
+        this.$store.commit("changeTodoTitle", value);
       }
+    },
+    caption: {
+      get() {
+        return this.$store.getters.getTodoCaption;
+      },
+      set(value) {
+        this.$store.commit("changeTodoCaption", value);
+      }
+    },
+  },
+  methods: {
+    setTodo(){
+        this.$store.commit("setTodos", {title:this.title,caption:this.caption,id:this.$uuid.v4()});
+        console.log(this.$store.state.todos);
     }
-  }
+  },
 };
 </script>
 <style scoped>
