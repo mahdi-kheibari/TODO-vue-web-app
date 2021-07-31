@@ -5,7 +5,9 @@
                 <div class="row no-gutters w-100 align-items-center">
                     <h3 class="card-title col-9"> {{title}}</h3>
                     <div class="col-2 offset-1">
-                        <b-icon icon="trash" font-scale="2" class="text-danger items-icon"></b-icon>
+                        <b-icon icon="trash" 
+                        @click="deleteTodo(id)"
+                        font-scale="2" class="text-danger items-icon"></b-icon>
                     </div>
                 </div>
             </div>
@@ -18,10 +20,15 @@
     </div>
 </template>
 <script>
+import { mapMutations } from 'vuex';
 export default {
     props:{
         title:String,
-        caption:String
+        caption:String,
+        id:String
+    },
+    methods:{
+        ...mapMutations(["deleteTodo"])
     }
 }
 </script>

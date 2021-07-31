@@ -8,7 +8,7 @@
           </div>
           <div class="col-12 col-md-6">
             <div class="d-flex flex-column h-100 justify-content-center">
-              <todo-item v-for="todo in todos" :key="todo.id" :title="todo.title" :caption="todo.caption"></todo-item>
+              <todo-item v-for="todo in todos" :key="todo.id" :id="todo.id" :title="todo.title" :caption="todo.caption"></todo-item>
             </div>
           </div>
         </div>

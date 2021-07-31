@@ -5,5 +5,10 @@ export const changeTodoCaption = (context, newTitle) => {
     context.commit("changeTodoCaption", newTitle);
 };
 export const setTodos = (context, Todo) => {
-    context.commit("setTodos", Todo);
+    if (Todo.title!=="") {
+        context.commit("setTodos", Todo);
+    }
+    else{
+        alert("please enter a title for TODO");
+    }
 };
