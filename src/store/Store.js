@@ -9,7 +9,9 @@ export const store = new Vuex.Store({
     state: {
         todos:[],
         todoTitle:"",
-        todoCaption:""
+        todoCaption:"",
+        submitValue:"Create",
+        changeId:""
     },
     actions,
     getters,

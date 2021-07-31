@@ -18,15 +18,22 @@
             v-model="caption"
           >
           </textarea>
-          <input
+          <input v-if="submit==='Create'"
             type="submit"
-            value="Creat new TODO"
+            value="Create new TODO"
             @click.prevent="
               setTodos({
-                title:title,
-                caption:caption,
-                id:$uuid.v4()
+                title: title,
+                caption: caption,
+                id: $uuid.v4()
               })"
+            class="btn btn-success text-white align-self-start"
+          />
+          <input v-else
+            type="submit"
+            value="Change TODO"
+            @click.prevent="
+              changeTodo"
             class="btn btn-success text-white align-self-start"
           />
         </form>
@@ -35,11 +42,8 @@
   </div>
 </template>
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapMutations } from "vuex";
 export default {
-  data() {
-    return {};
-  },
   computed: {
     title: {
       get() {
@@ -56,10 +60,14 @@ export default {
       set(value) {
         this.$store.commit("changeTodoCaption", value);
       }
+    },
+    submit() {
+      return this.$store.state.submitValue;
     }
   },
   methods: {
     ...mapActions(["setTodos"]),
+    ...mapMutations(["changeTodo"])
   }
 };
 </script>
