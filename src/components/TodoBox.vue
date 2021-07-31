@@ -2,7 +2,7 @@
   <div>
     <div class="TodoBox d-flex align-items-center">
       <div class="d-flex flex-column justify-content-center align-items-center">
-        <h1 class="text-white mb-3">TODO app by Mahdi Kheibari</h1>
+        <h1 class="text-white mb-3"><span class="text-primary">TODO App</span> by Mahdi Kheibari</h1>
         <form action="" class="w-100">
           <input
             type="text"
@@ -27,14 +27,14 @@
                 caption: caption,
                 id: $uuid.v4()
               })"
-            class="btn btn-success text-white align-self-start"
+            class="btn btn-primary text-white align-self-start"
           />
           <input v-else
             type="submit"
             value="Change TODO"
             @click.prevent="
               changeTodo"
-            class="btn btn-success text-white align-self-start"
+            class="btn btn-primary text-white align-self-start"
           />
         </form>
       </div>

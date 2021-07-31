@@ -37,3 +37,17 @@ export const changeTodo = (state) => {
     state.todoTitle = "";
     state.todoCaption = "";
 };
+export const completedList=(state,info)=>{
+    if (info.completed===true) {
+        state.todoCompleted = [
+        ...state.todoCompleted,
+        { title: info.title, caption: info.caption, id: info.id }
+      ];
+    } else {
+        state.todoCompleted = state.todoCompleted.filter(
+        item => item.id !== info.id
+      );
+    };
+      
+    
+} 

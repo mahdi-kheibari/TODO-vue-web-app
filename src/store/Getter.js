@@ -6,4 +6,4 @@ export const getTodoTitle=(state)=>{
 };
 export const getTodoCaption=(state)=>{
     return state.todoCaption;
-} 
+};

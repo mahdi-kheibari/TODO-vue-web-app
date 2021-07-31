@@ -11,7 +11,8 @@ export const store = new Vuex.Store({
         todoTitle:"",
         todoCaption:"",
         submitValue:"Create",
-        changeId:""
+        changeId:"",
+        todoCompleted:[]
     },
     actions,
     getters,

@@ -8,7 +8,14 @@
           </div>
           <div class="col-12 col-md-6">
             <div class="d-flex flex-column h-100 justify-content-center">
-              <todo-item v-for="todo in todos" :key="todo.id" :id="todo.id" :title="todo.title" :caption="todo.caption"></todo-item>
+              <todo-item
+                v-for="todo in todos"
+                :key="todo.id"
+                :id="todo.id"
+                :title="todo.title"
+                :caption="todo.caption"
+                @completed="completedList($event)"
+              ></todo-item>
             </div>
           </div>
         </div>
@@ -18,6 +25,7 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 import TodoBox from "./components/TodoBox";
 import TodoItem from "./components/TodoItem";
 export default {
@@ -32,6 +40,9 @@ export default {
     todos() {
       return this.$store.getters.todos;
     }
+  },
+  methods: {
+    ...mapMutations(["completedList"]),
   }
 };
 </script>
@@ -41,9 +52,9 @@ export default {
   background: rgb(249, 100, 0);
   background: linear-gradient(
     90deg,
-    rgba(249, 100, 0, 1) 0%,
-    rgba(255, 89, 0, 1) 23%,
-    rgba(255, 178, 0, 1) 100%
+    rgb(255, 153, 0) 0%,
+    rgb(255, 173, 49) 50%,
+    rgb(255, 193, 99) 100%
   );
 }
 </style>
