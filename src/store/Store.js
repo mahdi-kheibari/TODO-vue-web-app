@@ -12,7 +12,9 @@ export const store = new Vuex.Store({
         todoCaption:"",
         submitValue:"Create",
         changeId:"",
-        todoCompleted:[]
+        completedTodo:[],
+        uncompletedTodo:[],
+        viewTodos:"All"
     },
     actions,
     getters,

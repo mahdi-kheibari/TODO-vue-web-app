@@ -6,11 +6,14 @@ export const changeTodoCaption = (state, newTitle) => {
 };
 export const setTodos = (state, newTodo) => {
     state.todos = [...state.todos, newTodo];
+    state.uncompletedTodo=[...state.uncompletedTodo, newTodo]
     state.todoTitle = "";
     state.todoCaption = "";
 };
 export const deleteTodo = (state, id) => {
     state.todos = state.todos.filter((item) => item.id !== id);
+    state.completedTodo = state.completedTodo.filter((item) => item.id !== id);
+    state.uncompletedTodo = state.uncompletedTodo.filter((item) => item.id !== id);
 };
 export const editTodo = (state, todoInfo) => {
     state.todoTitle = todoInfo.title;
@@ -33,21 +36,44 @@ export const changeTodo = (state) => {
             }
         }
     });
+    state.uncompletedTodo=state.uncompletedTodo.map((item) => {
+        if (item.id === state.changeId) {
+            return {
+                ...item,
+                title: state.todoTitle,
+                caption: state.todoCaption
+            }
+        }
+        else {
+            return {
+                ...item
+            }
+        }
+    });
     state.submitValue = "Create";
     state.todoTitle = "";
     state.todoCaption = "";
 };
 export const completedList=(state,info)=>{
-    if (info.completed===true) {
-        state.todoCompleted = [
-        ...state.todoCompleted,
-        { title: info.title, caption: info.caption, id: info.id }
+    info.complete=!info.complete;
+    if (info.complete===true) {
+        state.completedTodo = [
+        ...state.completedTodo,
+        { title: info.title, caption: info.caption, id: info.id,complete:info.complete }
       ];
+      state.uncompletedTodo=state.uncompletedTodo.filter((item)=>item.id!==info.id);
+      state.todos[state.todos.findIndex((item)=>item.id===info.id)].complete=true;
     } else {
-        state.todoCompleted = state.todoCompleted.filter(
+        state.completedTodo = state.completedTodo.filter(
         item => item.id !== info.id
       );
-    };
-      
-    
-} 
+      state.uncompletedTodo = [
+        ...state.uncompletedTodo,
+        { title: info.title, caption: info.caption, id: info.id,complete:info.complete }
+      ];
+      state.todos[state.todos.findIndex((item)=>item.id===info.id)].complete=false;
+    };   
+};
+export const changeViewTodos = (state, mode) => {
+    state.viewTodos = mode;
+};

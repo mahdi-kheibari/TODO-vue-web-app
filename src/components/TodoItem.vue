@@ -3,7 +3,7 @@
     <div class="card my-4">
       <div class="card-header bg-title text-white">
         <div class="row no-gutters w-100 align-items-center">
-          <h3 :class="['card-title', 'col-8', { completed: completed }]">
+          <h3 :class="['card-title', 'col-8', { completed: complete }]">
             {{ title }}
           </h3>
           <div
@@ -11,7 +11,7 @@
           >
             <b-icon
               :icon="checkCompleted"
-              @click="handleCompleted"
+              @click="completedList({complete:complete,title:title, caption:caption, id:id})"
               font-scale="1.8"
               class="text-white items-icon"
             ></b-icon>
@@ -19,7 +19,7 @@
               icon="pencil-square"
               @click="editTodo({ title, caption, id })"
               font-scale="2"
-              :class="['text-warning','items-icon',{forCompleted:completed}]"
+              :class="['text-warning','items-icon',{forCompleted:complete}]"
             ></b-icon>
             <b-icon
               icon="trash"
@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="card-body">
-        <p :class="{ completed: completed }">
+        <p :class="{ completed: complete }">
           {{ caption }}
         </p>
       </div>
@@ -41,35 +41,31 @@
 <script>
 import { mapMutations } from "vuex";
 export default {
-  data() {
-    return {
-      completed: false
-    };
-  },
   props: {
     title: String,
     caption: String,
-    id: String
+    id: String,
+    complete:Boolean
   },
   methods: {
     ...mapMutations(["deleteTodo"]),
     ...mapMutations(["editTodo"]),
     ...mapMutations(["changeItemInfo"]),
     ...mapMutations(["todoCompleted"]),
-    handleCompleted() {
-      this.completed = !this.completed;
-      this.$emit("completed",{completed:this.completed,title: this.title, caption: this.caption, id: this.id})
-    }
+    ...mapMutations(["completedList"])
   },
   computed: {
     checkCompleted() {
-      if (this.completed) {
+      if (this.complete) {
         return "check-square-fill";
       } else {
         return "check-square";
       }
     },
-  }
+    viewTodos() {
+      return this.$store.getters.viewTodos;
+    },
+  },
 };
 </script>
 <style scoped>

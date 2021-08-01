@@ -25,7 +25,8 @@
               setTodos({
                 title: title,
                 caption: caption,
-                id: $uuid.v4()
+                id: $uuid.v4(),
+                complete:false
               })"
             class="btn btn-primary text-white align-self-start"
           />
