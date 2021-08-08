@@ -1,5 +1,4 @@
 <template>
-  <div id="app">
     <div class="container">
       <div class="row">
         <div class="col-12 col-md-6">
@@ -36,15 +35,14 @@
             ></todo-item>
           </div>
         </div>
-      </div>
-    </div>
   </div>
+        
+    </div>
 </template>
-
 <script>
 import { mapMutations } from "vuex";
-import TodoBox from "./components/TodoBox";
-import TodoItem from "./components/TodoItem";
+import TodoBox from "@/components/TodoBox";
+import TodoItem from "@/components/TodoItem";
 export default {
   data() {
     return {};
