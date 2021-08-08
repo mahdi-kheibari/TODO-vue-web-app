@@ -1,6 +1,8 @@
 # todo-app
 
-> A Vue.js project
+
+> view project on this link:
+https://todo-vue-app-demo.netlify.app/
 
 ## Build Setup
 
