@@ -1,7 +1,9 @@
 export default {
     // Target: https://go.nuxtjs.dev/config-target
     target: 'static',
-  
+    router: {
+        base: '/TODO-vue-web-app/'
+    },
     // Global page headers: https://go.nuxtjs.dev/config-head
     head: {
       title: 'TODO App',
