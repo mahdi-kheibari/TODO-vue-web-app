@@ -2,7 +2,7 @@
 
 
 > view project on this link:
-https://todo-vue-app-demo.netlify.app/
+https://mahdi-kheibari.github.io/TODO-vue-web-app/
 
 ## Build Setup
 
